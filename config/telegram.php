@@ -72,4 +72,6 @@ return [
         SubscribeCommand::class,
         UnsubscribeCommand::class,
     ],
+
+    'route' => env('WEBHOOK_ROUTE')
 ];
