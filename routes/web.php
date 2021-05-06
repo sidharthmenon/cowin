@@ -24,7 +24,7 @@ $router->get('/', function () use ($router) {
     return "Developed by Sidharth Menon";
 });
 
-$router->post('/'.config('telegram.route').'/webhook', function () {
+$router->post(env('WEBHOOK_ROUTE').'/webhook', function () {
     $update = Telegram::commandsHandler(true);
     
     return 'ok';
