@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  backend:
+    image: cowin
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on: 
+      - mysql
+    ports:
+      - 80:80
+    volumes: 
+      - ./:/var/www/html
+    environment: 
+      APP_ENV: local
+      CONTAINER_ROLE: app
+
+  mysql:
+    container_name: cowin-mysql
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    volumes:
+      - ../mysql/cowin:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
