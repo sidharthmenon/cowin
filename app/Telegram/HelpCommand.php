@@ -32,8 +32,11 @@ class HelpCommand extends Command
             $text .= sprintf('/%s - %s'.PHP_EOL, $name, $handler->getDescription());
         }
 
+        
         $text .= PHP_EOL;
-        $text .= "Developed by [Sidharth Menon](https://in.linkedin.com/in/isidharth)";
+        $text .= 'Disclaimer: This bot utilises [Co-WIN Public APIs](https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2#/) to provide the information. All information provided by this bot is derived directly from the Co-WIN Public APIs.';
+        $text .= PHP_EOL;
+        $text .= "Bot developed by [Sidharth Menon](https://in.linkedin.com/in/isidharth)";
 
         $this->replyWithMessage(['text' => $text, 'parse_mode' => 'Markdown']);
     }
