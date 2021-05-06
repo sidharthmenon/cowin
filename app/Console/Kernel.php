@@ -25,6 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('check:slot')->hourly();
+        $schedule->command('check:slot')->everyFifteenMinutes();
     }
 }
