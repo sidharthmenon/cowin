@@ -44,6 +44,10 @@ class SlotCommand extends Command
 
       $sessions = $response->sessions;
 
+      $sessions = array_filter($sessions, function($item) {
+        return $item->available_capacity > 0;
+      });
+
       if(count($sessions)==0){
         $this->replyWithMessage(['text' => 'No Slots Available']);
         return;

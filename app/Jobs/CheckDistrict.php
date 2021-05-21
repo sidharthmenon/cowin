@@ -46,6 +46,10 @@ class CheckDistrict extends Job
 
         $sessions = $response->sessions;
 
+        $sessions = array_filter($sessions, function($item) {
+            return $item->available_capacity > 0;
+        });
+
         if($sessions){
             $subscriptions = Subscription::where('district', $this->district)->get();
             foreach($subscriptions as $subscription){
