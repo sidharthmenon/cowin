@@ -49,11 +49,15 @@ class CheckDistrict extends Job
         $sessions = array_filter($sessions, function($item) {
             return $item->available_capacity > 0;
         });
+        
+        $chunks = array_chunk($sessions, 20);
 
         if($sessions){
             $subscriptions = Subscription::where('district', $this->district)->get();
             foreach($subscriptions as $subscription){
-                $subscription->user->notify(new SlotNotification($sessions, $date));
+                foreach($chunks as $chunk){
+                    $subscription->user->notify(new SlotNotification($chunk, $date));
+                }
             }
         }
 
