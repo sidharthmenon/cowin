@@ -38,7 +38,8 @@ class SlotNotification extends Notification implements ShouldQueue
 
     foreach ($this->sessions as $session) {
         $text .= sprintf('*%s* - %s'.PHP_EOL, $session->name, $session->address);
-        $text .= sprintf('Availability: *%s*'.PHP_EOL, $session->available_capacity);
+        $text .= sprintf('Availability - Dose 1: *%s*'.PHP_EOL, $session->available_capacity_dose1);
+        $text .= sprintf('Availability - Dose 2: *%s*'.PHP_EOL, $session->available_capacity_dose2);
         $text .= sprintf('Vaccine: *%s*'.PHP_EOL, $session->vaccine);
         $text .= sprintf('Min Age: *%s*'.PHP_EOL, $session->min_age_limit);
         $text .= sprintf('Fees: *%s*'.PHP_EOL, $session->fee_type);
